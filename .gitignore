@@ -1,0 +1,7 @@
+*.safetensors
+*.pth
+*.pkl
+*.bin
+models/
+dataset_cache*
+__pycache__/
