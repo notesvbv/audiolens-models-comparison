@@ -1,0 +1,42 @@
+{
+  "juncture": "J5 \u2014 Text to Speech",
+  "config": {
+    "test_sentences": 50,
+    "harvard_count": 20,
+    "audiolens_count": 30,
+    "edge_tts_voice": "en-GB-SoniaNeural",
+    "kokoro_voice": "bf_emma",
+    "models_dir": "/Users/vaibhav/Desktop/AudiolensCode/J5 TTS/models",
+    "audio_dir": "/Users/vaibhav/Desktop/AudiolensCode/J5 TTS/results/j5_audio"
+  },
+  "models": {
+    "Edge TTS": {
+      "metrics": {
+        "model": "Edge TTS",
+        "avg_ms": 1011.09,
+        "min_ms": 802.93,
+        "max_ms": 2193.79,
+        "total_ms": 50554.59,
+        "offline": false,
+        "size_mb": 0,
+        "sentences_run": 50
+      },
+      "composite_score": 0.0113
+    },
+    "Kokoro": {
+      "metrics": {
+        "model": "Kokoro",
+        "avg_ms": 1027.75,
+        "min_ms": 422.72,
+        "max_ms": 1821.8,
+        "total_ms": 51387.63,
+        "offline": true,
+        "size_mb": 326,
+        "sentences_run": 50
+      },
+      "composite_score": 0.3
+    }
+  },
+  "winner": "Kokoro",
+  "mos_note": "manual mos scoring results saved in MOS_Scoring.md file"
+}

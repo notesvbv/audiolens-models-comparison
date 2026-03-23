@@ -1,0 +1,58 @@
+{
+  "juncture": "J1 \u2014 Document Classification",
+  "config": {
+    "images_per_class": 250,
+    "fine_tune_epochs": 10,
+    "train_val_test": "70/15/15",
+    "device": "mps",
+    "seed": 42,
+    "models_dir": "/Users/vaibhav/Desktop/AudiolensCode/models"
+  },
+  "classes": [
+    "letter",
+    "form",
+    "email",
+    "handwritten",
+    "advertisement",
+    "specification",
+    "news_article",
+    "budget",
+    "invoice"
+  ],
+  "models": {
+    "DiT-base": {
+      "metrics": {
+        "accuracy": 0.9763,
+        "f1": 0.9762,
+        "precision": 0.9766,
+        "recall": 0.9763,
+        "avg_ms": 12.82,
+        "size_mb": 343
+      },
+      "composite_score": 0.818
+    },
+    "EfficientNet-B0": {
+      "metrics": {
+        "accuracy": 0.6183,
+        "f1": 0.616,
+        "precision": 0.6617,
+        "recall": 0.6183,
+        "avg_ms": 15.73,
+        "size_mb": 21
+      },
+      "composite_score": 0.494
+    },
+    "ViT-base": {
+      "metrics": {
+        "accuracy": 0.6272,
+        "f1": 0.6244,
+        "precision": 0.6428,
+        "recall": 0.6272,
+        "avg_ms": 11.64,
+        "size_mb": 330
+      },
+      "composite_score": 0.5529
+    }
+  },
+  "winner": "DiT-base"
+}

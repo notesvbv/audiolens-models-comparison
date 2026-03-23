@@ -1,0 +1,72 @@
+============================================================
+  audiolens — j5 text to speech evaluation
+============================================================
+kokoro path : /Users/vaibhav/Desktop/AudiolensCode/J5 TTS/models/kokoro-82m
+audio dir   : /Users/vaibhav/Desktop/AudiolensCode/J5 TTS/results/j5_audio
+preflight passed.
+============================================================
+
+test set: 20 harvard + 30 audiolens = 50 total sentences
+
+============================================================
+  MODEL 1 — Edge TTS  (online, microsoft neural)
+============================================================
+voice: en-GB-SoniaNeural
+synthesising 50 sentences...
+
+--- Edge TTS ---
+  avg synthesis time : 1011.09 ms
+  min / max          : 802.93 ms / 2193.79 ms
+  total for 50 sent. : 50554.59 ms  (50.6s)
+  offline capable    : no
+  model size         : 0 MB
+  note               : audio saved to ./results/j5_audio/edge_tts/
+                       listen and assign mos score (1-5) for report
+
+============================================================
+  MODEL 2 — Kokoro  (offline, open-source neural)
+  path: ./models/kokoro-82m
+============================================================
+kokoro loaded from hf hub (local path failed).
+voice: bf_emma
+synthesising 50 sentences...
+
+--- Kokoro ---
+  avg synthesis time : 1027.75 ms
+  min / max          : 422.72 ms / 1821.8 ms
+  total for 50 sent. : 51387.63 ms  (51.4s)
+  offline capable    : yes
+  model size         : 326 MB
+  note               : audio saved to ./results/j5_audio/kokoro/
+                       listen and assign mos score (1-5) for report
+
+===========================================================================
+  J5 TEXT TO SPEECH — FINAL COMPARISON
+===========================================================================
+Model             Avg (ms)   Min (ms)   Max (ms)  Total (s)  Offline     MB
+---------------------------------------------------------------------------
+Edge TTS           1011.09     802.93    2193.79      50.6s       no      0
+Kokoro             1027.75     422.72     1821.8      51.4s      yes    326
+===========================================================================
+
+note: audio quality (mos score) performed separately.
+
+comparison chart saved -> ./results/j5_comparison_chart.png
+
+=======================================================
+  composite score  (speed 70% + offline 30%)
+=======================================================
+  Kokoro         : 0.3  <-- winner
+  Edge TTS       : 0.0113
+
+j5 winner      : Kokoro
+avg time (ms)  : 1027.75
+offline        : yes
+size (mb)      : 326
+
+reminder: also evaluated audio quality manually using the saved audio files. saved in MOS_scoring MD file.
+          mos scoring guide — 1: bad, 2: poor, 3: fair, 4: good, 5: excellent
+
+full results saved -> ./results/j5_tts_results.json
+
+done.

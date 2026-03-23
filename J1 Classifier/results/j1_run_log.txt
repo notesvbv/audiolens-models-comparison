@@ -1,0 +1,178 @@
+============================================================
+  AudioLens — J1 Document Classification
+============================================================
+Device      : mps
+Models dir  : /Users/vaibhav/Desktop/AudiolensCode/models
+All model folders verified.
+============================================================
+
+9 document classes:
+  [0] letter
+  [1] form
+  [2] email
+  [3] handwritten
+  [4] advertisement
+  [5] specification
+  [6] news_article
+  [7] budget
+  [8] invoice
+
+Streaming RVL-CDIP — collecting samples across 9 classes...
+This only happens once. Will be cached after this run.
+
+Dataset cached -> ./results/dataset_cache.pkl
+
+Dataset split — Train: 70%  Val: 15%  Test: 15%
+DataLoaders ready.
+
+============================================================
+  MODEL 1 — DiT-base
+  Path: ./models/dit-base-finetuned-rvlcdip
+============================================================
+Loaded. Params: 85,820,176
+
+--- DiT-base ---
+  Accuracy          : 97.63%
+  Weighted F1       : 97.62%
+  Weighted Precision: 97.66%
+  Weighted Recall   : 97.63%
+  Avg Inference (ms): 12.82
+  Model Size (MB)   : 343
+
+Per-class report:
+               precision    recall  f1-score   support
+
+       letter       0.95      1.00      0.98        42
+         form       0.97      0.90      0.94        41
+        email       1.00      1.00      1.00        29
+  handwritten       0.95      0.98      0.96        42
+advertisement       1.00      1.00      1.00        39
+specification       0.97      0.97      0.97        32
+ news_article       0.97      1.00      0.98        32
+       budget       1.00      0.98      0.99        43
+      invoice       0.97      0.97      0.97        38
+
+     accuracy                           0.98       338
+    macro avg       0.98      0.98      0.98       338
+ weighted avg       0.98      0.98      0.98       338
+
+  Confusion matrix saved -> ./results/j1_dit_confusion.png
+
+============================================================
+  MODEL 2 — EfficientNet-B0
+  Path: ./models/efficientnet-b0
+============================================================
+Loaded. Trainable params (head only): 11,529
+
+Fine-tuning EfficientNet-B0 for 10 epochs...
+  Epoch 1: Train=0.4610  Val=0.5282  Loss=1.6977
+  Epoch 2: Train=0.6051  Val=0.4896  Loss=1.2621
+  Epoch 3: Train=0.6533  Val=0.5490  Loss=1.1060
+  Epoch 4: Train=0.6762  Val=0.5668  Loss=1.0207
+  Epoch 5: Train=0.6952  Val=0.5638  Loss=0.9526
+  Epoch 6: Train=0.7098  Val=0.6291  Loss=0.9204
+  Epoch 7: Train=0.7219  Val=0.6588  Loss=0.8739
+  Epoch 8: Train=0.7219  Val=0.6469  Loss=0.8322
+  Epoch 9: Train=0.7384  Val=0.5786  Loss=0.8161
+  Epoch 10: Train=0.7365  Val=0.5935  Loss=0.7959
+
+--- EfficientNet-B0 ---
+  Accuracy          : 61.83%
+  Weighted F1       : 61.60%
+  Weighted Precision: 66.17%
+  Weighted Recall   : 61.83%
+  Avg Inference (ms): 15.73
+  Model Size (MB)   : 21
+
+Per-class report:
+               precision    recall  f1-score   support
+
+       letter       0.70      0.67      0.68        42
+         form       0.33      0.71      0.45        41
+        email       1.00      0.79      0.88        29
+  handwritten       0.74      0.81      0.77        42
+advertisement       0.79      0.77      0.78        39
+specification       0.60      0.19      0.29        32
+ news_article       0.79      0.72      0.75        32
+       budget       0.55      0.56      0.55        43
+      invoice       0.57      0.32      0.41        38
+
+     accuracy                           0.62       338
+    macro avg       0.67      0.61      0.62       338
+ weighted avg       0.66      0.62      0.62       338
+
+  Confusion matrix saved -> ./results/j1_effnet_confusion.png
+
+============================================================
+  MODEL 3 — ViT-base
+  Path: ./models/vit-base-patch16-224
+============================================================
+Loaded. Trainable params (head only): 6,921
+
+Fine-tuning ViT-base for 10 epochs...
+  Epoch 1: Train=0.4730  Val=0.5905  Loss=1.5067
+  Epoch 2: Train=0.6114  Val=0.6261  Loss=1.1121
+  Epoch 3: Train=0.6438  Val=0.6558  Loss=1.0066
+  Epoch 4: Train=0.6781  Val=0.6647  Loss=0.9368
+  Epoch 5: Train=0.6959  Val=0.6706  Loss=0.8870
+  Epoch 6: Train=0.7130  Val=0.6884  Loss=0.8452
+  Epoch 7: Train=0.7219  Val=0.6825  Loss=0.8145
+  Epoch 8: Train=0.7276  Val=0.6855  Loss=0.7961
+  Epoch 9: Train=0.7359  Val=0.6795  Loss=0.7659
+  Epoch 10: Train=0.7556  Val=0.6706  Loss=0.7221
+
+--- ViT-base ---
+  Accuracy          : 62.72%
+  Weighted F1       : 62.44%
+  Weighted Precision: 64.28%
+  Weighted Recall   : 62.72%
+  Avg Inference (ms): 11.64
+  Model Size (MB)   : 330
+
+Per-class report:
+               precision    recall  f1-score   support
+
+       letter       0.50      0.69      0.58        42
+         form       0.36      0.37      0.36        41
+        email       0.93      0.90      0.91        29
+  handwritten       0.77      0.86      0.81        42
+advertisement       0.76      0.74      0.75        39
+specification       0.57      0.41      0.47        32
+ news_article       0.76      0.69      0.72        32
+       budget       0.51      0.63      0.56        43
+      invoice       0.75      0.39      0.52        38
+
+     accuracy                           0.63       338
+    macro avg       0.66      0.63      0.63       338
+ weighted avg       0.64      0.63      0.62       338
+
+  Confusion matrix saved -> ./results/j1_vit_confusion.png
+
+===========================================================================
+  J1 DOCUMENT CLASSIFICATION — FINAL COMPARISON
+===========================================================================
+Model                    Accuracy         F1    Precision     Recall   ms/img     MB
+---------------------------------------------------------------------------
+DiT-base                   97.63%     97.62%       97.66%     97.63%    12.82    343
+EfficientNet-B0            61.83%     61.60%       66.17%     61.83%    15.73     21
+ViT-base                   62.72%     62.44%       64.28%     62.72%    11.64    330
+===========================================================================
+
+Comparison chart saved -> ./results/j1_comparison_chart.png
+
+=======================================================
+  COMPOSITE SCORE  (Acc 50% + F1 30% + Speed 20%)
+=======================================================
+  DiT-base            : 0.818  <-- WINNER
+  ViT-base            : 0.5529
+  EfficientNet-B0     : 0.494
+
+J1 WINNER       : DiT-base
+Accuracy        : 97.63%
+Weighted F1     : 97.62%
+Avg Infer (ms)  : 12.82
+Size (MB)       : 343
+
+Full results saved -> ./results/j1_classification_results.json
+
+Done.
